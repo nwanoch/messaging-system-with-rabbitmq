@@ -8,6 +8,7 @@ from flask import Flask, request
 from celery import Celery
 import logging
 from datetime import datetime
+import re
  
 
 load_dotenv()
@@ -76,15 +77,24 @@ def send_email(recipient):
         logging.error(error_message)
         raise
 
+
+def is_valid_email(email):
+    # Regular expression for validating an email
+    regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(regex, email)
+
 @app.route('/')
 def index():
     if 'sendmail' in request.args:
         recipient = request.args.get('sendmail')
-        try:
-            send_email.delay(recipient)
-            return f"Email queued for sending to {recipient}"
-        except Exception as e:
-            return f"Failed to send email: {str(e)}", 500
+        if is_valid_email(recipient):
+            try:
+                send_email.delay(recipient)
+                return f"Email queued for sending to {recipient}"
+            except Exception as e:
+                return f"Failed to send email: {str(e)}", 500
+        else:
+            return "Invalid email format", 400
     elif 'talktome' in request.args:
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         logging.info(f"Talktome request at {current_time}")
