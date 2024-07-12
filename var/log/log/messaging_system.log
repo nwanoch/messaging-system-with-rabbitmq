@@ -1,0 +1,11 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 114-628-507
+INFO:root:Talktome request at 2024-07-12 09:22:22
+INFO:werkzeug:127.0.0.1 - - [12/Jul/2024 09:22:22] "GET /?talktome HTTP/1.1" 200 -
+INFO:root:Talktome request at 2024-07-12 09:22:22
+INFO:werkzeug:127.0.0.1 - - [12/Jul/2024 09:22:22] "GET /?talktome HTTP/1.1" 200 -
+INFO:root:Talktome request at 2024-07-12 09:22:22
+INFO:werkzeug:127.0.0.1 - - [12/Jul/2024 09:22:22] "GET /?talktome HTTP/1.1" 200 -
+INFO:root:Talktome request at 2024-07-12 09:22:22
+INFO:werkzeug:127.0.0.1 - - [12/Jul/2024 09:22:22] "GET /?talktome HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/mac/Documents/messaging_system/app.py', reloading
